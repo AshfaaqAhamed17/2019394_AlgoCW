@@ -36,7 +36,6 @@ public class ReaderClass {
         System.out.println("Adjacency List\n");
         System.out.println(g1);
 
-        System.out.println("hello");
 
     }
 }
