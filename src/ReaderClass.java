@@ -7,7 +7,7 @@ public class ReaderClass {
     static List<String> tempArr = new ArrayList<>();
 
     public static void main(String[] args) throws FileNotFoundException {
-        File fileText = new File("bridge_3.txt");
+        File fileText = new File("bridge_0.txt");
         Scanner fileScanner = new Scanner(fileText);
 
         String node = fileScanner.nextLine();
@@ -22,6 +22,8 @@ public class ReaderClass {
         AdjacencyMatrix g = new AdjacencyMatrix(Integer.parseInt(node));
         AdjacencyList g1 = new AdjacencyList(Integer.parseInt(node));
 
+        FordFulkersonMaxFlow m = new FordFulkersonMaxFlow();
+        FordFulkersonMaxFlow.V = Integer.parseInt(node);
 
         for (int i = 0; i<tempArr.size(); i++){
             stringArr = tempArr.get(i).split(" ");
@@ -32,10 +34,11 @@ public class ReaderClass {
 
         System.out.println("Adjacency Matrix\n");
         g.printMatrix();
-        System.out.println("");
-        System.out.println("Adjacency List\n");
-        System.out.println(g1);
+        System.out.println("\n\n");
+//        System.out.println("Adjacency List\n");
+//        System.out.println(g1);
 
+        System.out.println("The maximum possible flow is " + m.fordFulkerson(g.matrix, 0, Integer.parseInt(node)-1));
 
     }
 }

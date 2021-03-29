@@ -13,7 +13,6 @@ public class AdjacencyList {
         }
     }
 
-
     //n=num of vertex
     List<Edge>[] G;
     public AdjacencyList(int n){
@@ -37,21 +36,8 @@ public class AdjacencyList {
     public String toString(){
         String result="";
         for(int i=0;i<G.length;i++)
-            result+=i+"=>"+G[i]+"\n";
+            result+=i+"=>"+G[i]+"\n\n";
         return result;
-    }
-}
-
-class GraphExampleNew {
-    public static void main(String[] args) {
-        AdjacencyList g = new AdjacencyList(4);
-        g.addEdge(0, 1, 6);
-        g.addEdge(0, 2, 4);
-        g.addEdge(1, 2, 2);
-        g.addEdge(1, 3, 3);
-        g.addEdge(2, 3, 5);
-
-        System.out.println(g);
     }
 }
 
