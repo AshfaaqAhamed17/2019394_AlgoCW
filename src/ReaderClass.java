@@ -1,3 +1,15 @@
+/* *****************************************************************************
+ *  Name:    Ashfaaq Ahamed
+ *  studentID: 2019394
+ *  UOW ID : W1761334
+ *
+ *  Description:  This is the algorithm cw 1 for which we have to find the .
+ *                maximum flow of the graph i have selected matrix as my data type because
+ *                its easy to read;//TODO
+ *
+ *
+ **************************************************************************** */
+
 import java.io.*;
 import java.util.*;
 
@@ -7,10 +19,12 @@ public class ReaderClass {
     static List<String> tempArr = new ArrayList<>();
 
     public static void main(String[] args) throws FileNotFoundException {
-        File fileText = new File("bridge_0.txt");
+        Stopwatch stopwatch = new Stopwatch();
+        File fileText = new File("bridge_1.txt");
         Scanner fileScanner = new Scanner(fileText);
 
-        String node = fileScanner.nextLine();
+
+        String node = fileScanner.nextLine().trim();
         System.out.println("Number of nodes : " + node);
         System.out.println("");
         while (fileScanner.hasNextLine()) {
@@ -27,6 +41,7 @@ public class ReaderClass {
 
         for (int i = 0; i<tempArr.size(); i++){
             stringArr = tempArr.get(i).split(" ");
+//            System.out.println(Arrays.toString(stringArr));
             g.addEdge(Integer.parseInt(stringArr[0]),Integer.parseInt(stringArr[1]),Integer.parseInt(stringArr[2]));
             g1.addEdge(Integer.parseInt(stringArr[0]),Integer.parseInt(stringArr[1]),Integer.parseInt(stringArr[2]));
 
@@ -39,6 +54,9 @@ public class ReaderClass {
 //        System.out.println(g1);
 
         System.out.println("The maximum possible flow is " + m.fordFulkerson(g.matrix, 0, Integer.parseInt(node)-1));
+
+        System.out.println("\nTime taken to complete the task => " + stopwatch.elapsedTime() + " seconds");
+
 
     }
 }
