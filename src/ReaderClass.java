@@ -1,25 +1,26 @@
 /* *****************************************************************************
  *  Name:    Ashfaaq Ahamed
- *  studentID: 2019394
- *  UOW ID : W1761334
+ *  Student ID: 2019394
+ *  UOW ID: W1761334
  *
- *  Description:  This is the algorithm cw 1 for which we have to find the .
- *                maximum flow of the graph i have selected matrix as my data type because
- *                its easy to read;//TODO
+ *  Description:    * Level-5, Algorithm CW
+ *                  * Aim - Algorithmic analysis of network flow
+ *                  * In order to find the maximum flow through a network,
+ *                   Matrix data structure is used.
+ *                   Ford-Fulkerson Algorithm including breath first search is used.
  *
- *
- **************************************************************************** */
+ ***************************************************************************** */
 
 import java.io.*;
 import java.util.*;
 
 public class ReaderClass {
-    static String reader;
-    static String[] stringArr;
-    static List<String> tempArr = new ArrayList<>();
+    static String reader;       //To read and the matrix values
+    static String[] stringArr;  //Stores the matrix value which is split. Stores each row by row
+    static List<String> tempArr = new ArrayList<>();    //ArrayList which stores all the rows together by splitting separately
 
     public static void main(String[] args) throws FileNotFoundException {
-        Stopwatch stopwatch = new Stopwatch();
+        Stopwatch stopwatch = new Stopwatch();              //Stop watch class to see the time elapsed
         File fileText = new File("bridge_1.txt");
         Scanner fileScanner = new Scanner(fileText);
 
@@ -33,30 +34,22 @@ public class ReaderClass {
             tempArr.add(reader);
         }
 
-        AdjacencyMatrix g = new AdjacencyMatrix(Integer.parseInt(node));
-        AdjacencyList g1 = new AdjacencyList(Integer.parseInt(node));
+        AdjacencyMatrix myMatrix = new AdjacencyMatrix(Integer.parseInt(node));
 
-        FordFulkersonMaxFlow m = new FordFulkersonMaxFlow();
-        FordFulkersonMaxFlow.V = Integer.parseInt(node);
+        FordFulkersonMaxFlow maxFlowObj = new FordFulkersonMaxFlow();
+        FordFulkersonMaxFlow.numOfVertices = Integer.parseInt(node);    //Extracting number of nodes from the data set and storing it
 
         for (int i = 0; i<tempArr.size(); i++){
             stringArr = tempArr.get(i).split(" ");
-//            System.out.println(Arrays.toString(stringArr));
-            g.addEdge(Integer.parseInt(stringArr[0]),Integer.parseInt(stringArr[1]),Integer.parseInt(stringArr[2]));
-            g1.addEdge(Integer.parseInt(stringArr[0]),Integer.parseInt(stringArr[1]),Integer.parseInt(stringArr[2]));
-
+            myMatrix.addEdge(Integer.parseInt(stringArr[0]),Integer.parseInt(stringArr[1]),Integer.parseInt(stringArr[2]));
         }
 
         System.out.println("Adjacency Matrix\n");
-        g.printMatrix();
+        myMatrix.printMatrix();
         System.out.println("\n\n");
-//        System.out.println("Adjacency List\n");
-//        System.out.println(g1);
 
-        System.out.println("The maximum possible flow is " + m.fordFulkerson(g.matrix, 0, Integer.parseInt(node)-1));
+        System.out.println("The maximum possible flow is " + maxFlowObj.fordFulkerson(myMatrix.matrix, 0, Integer.parseInt(node)-1));
 
         System.out.println("\nTime taken to complete the task => " + stopwatch.elapsedTime() + " seconds");
-
-
     }
 }

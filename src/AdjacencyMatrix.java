@@ -1,6 +1,6 @@
 public class AdjacencyMatrix {
     int vertex;
-    int matrix[][];
+    int[][] matrix;
 
     public AdjacencyMatrix(int vertex) {
         this.vertex = vertex;
@@ -8,7 +8,7 @@ public class AdjacencyMatrix {
     }
 
     public void addEdge(int source, int destination, int weight) {
-        matrix[source][destination]=weight;
+        matrix[source][destination] = weight;   //adding weights to the edges
     }
 
     public  void printMatrix(){
